@@ -40,6 +40,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
+group :test do
+  gem 'capybara'
+end
+
 group :development do
   gem 'rubocop'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
