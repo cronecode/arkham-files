@@ -1,3 +1,6 @@
-example_id                       | status | run_time     |
--------------------------------- | ------ | ------------ |
-./spec/visit_google_spec.rb[1:1] | passed | 3.16 seconds |
+example_id                                             | status  | run_time        |
+------------------------------------------------------ | ------- | --------------- |
+./spec/controllers/campaigns_controller_spec.rb[1:1:1] | passed  | 0.01385 seconds |
+./spec/helpers/campaigns_helper_spec.rb[1:1]           | pending | 0 seconds       |
+./spec/views/campaigns/new.html.erb_spec.rb[1:1]       | pending | 0.00001 seconds |
+./spec/visit_google_spec.rb[1:1]                       | passed  | 0.01531 seconds |
