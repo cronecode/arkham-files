@@ -22,5 +22,6 @@
 
 .byebug_history
 
+spec/examples.txt
+
 .idea/
-/spec/examples.txt
