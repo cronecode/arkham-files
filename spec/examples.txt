@@ -1,8 +1,8 @@
 example_id                                             | status  | run_time        |
 ------------------------------------------------------ | ------- | --------------- |
-./spec/controllers/campaigns_controller_spec.rb[1:1:1] | passed  | 0.01127 seconds |
+./spec/controllers/campaigns_controller_spec.rb[1:1:1] | passed  | 0.16612 seconds |
 ./spec/helpers/campaigns_helper_spec.rb[1:1]           | pending | 0.00001 seconds |
-./spec/models/campaign_spec.rb[1:1]                    | passed  | 0.00118 seconds |
-./spec/models/campaign_spec.rb[1:2]                    | passed  | 0.00694 seconds |
-./spec/views/campaigns/new.html.erb_spec.rb[1:1]       | pending | 0.00002 seconds |
-./spec/visit_google_spec.rb[1:1]                       | passed  | 0.01352 seconds |
+./spec/models/campaign_spec.rb[1:1]                    | passed  | 0.00107 seconds |
+./spec/models/campaign_spec.rb[1:2]                    | passed  | 0.00687 seconds |
+./spec/views/campaigns/new.html.erb_spec.rb[1:1]       | pending | 0.00001 seconds |
+./spec/visit_google_spec.rb[1:1]                       | passed  | 0.0132 seconds  |
