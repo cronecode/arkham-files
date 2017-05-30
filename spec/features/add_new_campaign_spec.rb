@@ -9,9 +9,11 @@ RSpec.describe "Add a new campaign" do
   end
 
   it "creates a new campaign" do
-    visit campaigns_new_path
-    fill_in "Name", :with => "Night of the Zealot"
-    click_button "Submit"
+    visit new_campaigns_path
+    within("form") do
+      fill_in "Name", :with => "Night of the Zealot"
+      click_button "Add campaign"
+    end
 
     expect(Campaign.count).to eq(1)
   end
