@@ -14,7 +14,7 @@ RSpec.describe "View all campaigns" do
 
     visit campaigns_path
 
-    expect(page).to have_content("Zealot")
-    expect(page).to have_content("Dunwich")
+    expect(page).to have_link("Zealot")
+    expect(page).to have_link("Dunwich")
   end
 end
