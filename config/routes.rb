@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  get 'campaigns/new'
+  root 'static_pages#home'
+
+  # get 'campaigns/new'
+  resource :campaigns
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'application#hello'
+  # root 'application#hello'
 end
