@@ -1,4 +1,11 @@
 class CampaignsController < ApplicationController
+  def index
+    @campaigns = Campaign.all
+  end
+
+  def show
+  end
+
   def new
     @campaign = Campaign.new
   end
@@ -10,9 +17,5 @@ class CampaignsController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  def show
-    @campaigns = Campaign.find_each
   end
 end

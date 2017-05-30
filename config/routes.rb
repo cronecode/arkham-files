@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
 
-  # get 'campaigns/new'
+  get '/campaigns', to: 'campaigns#index'
   resource :campaigns
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
