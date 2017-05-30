@@ -9,5 +9,6 @@ RSpec.describe "View existing campaign" do
     click_link "Dunwich"
 
     expect(page).to have_current_path("/campaigns/2")
+    expect(page).to have_content("This is the Dunwich campaign!")
   end
 end
