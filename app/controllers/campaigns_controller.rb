@@ -6,7 +6,6 @@ class CampaignsController < ApplicationController
   def create
     @campaign = Campaign.new(params[:name])
     if @campaign.save
-      flash[:success] = "Campaign created"
       redirect_to root_url
     else
       render 'new'
