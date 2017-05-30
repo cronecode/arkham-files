@@ -7,4 +7,14 @@ RSpec.describe "View all campaigns" do
 
     expect(page).to have_current_path("/campaigns")
   end
+
+  it "displays the list of created campaigns" do
+    Campaign.create(name: "Zealot")
+    Campaign.create(name: "Dunwich")
+
+    visit campaigns_path
+
+    expect(page).to have_content("Zealot")
+    expect(page).to have_content("Dunwich")
+  end
 end
