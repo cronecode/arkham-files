@@ -11,4 +11,8 @@ class CampaignsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @campaigns = Campaign.find_each
+  end
 end
