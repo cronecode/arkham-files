@@ -9,7 +9,7 @@ RSpec.describe "Add a new campaign" do
   end
 
   it "creates a new campaign" do
-    visit new_campaigns_path
+    visit new_campaign_path
     within("form") do
       fill_in "Name", :with => "Night of the Zealot"
       click_button "Add campaign"
