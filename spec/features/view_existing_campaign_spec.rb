@@ -8,6 +8,6 @@ RSpec.describe "View existing campaign" do
     visit campaigns_path
     click_link "Dunwich"
 
-    expect(page).to have_current_path("/campaigns/1")
+    expect(page).to have_current_path("/campaigns/2")
   end
 end
