@@ -22,7 +22,9 @@ class CampaignsController < ApplicationController
 
   def update
     @campaign = Campaign.find(params[:id])
-    @campaign.update(campaign_params)
+    if @campaign.update(campaign_params)
+      redirect_back(fallback_location: campaign_url(@campaign))
+    end
   end
 
   def edit
@@ -32,6 +34,6 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name)
+    params.require(:campaign).permit(:name, :notes)
   end
 end
