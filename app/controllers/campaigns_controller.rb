@@ -20,6 +20,11 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def update
+    @campaign = Campaign.find(params[:id])
+    @campaign.update(campaign_params)
+  end
+
   def edit
     @campaign = Campaign.find(params[:id])
   end
