@@ -8,9 +8,8 @@ RSpec.describe "/campaign/:id" do
 
       put campaign_path(@campaign), params: params
 
-      expect(response).to be_successful
-      expect(response.body.notes).to eq("blah")
+      follow_redirect!
+      expect(response.body).to include("blah")
     end
   end
-
 end
