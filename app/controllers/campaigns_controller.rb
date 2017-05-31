@@ -20,6 +20,11 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def edit
+    puts "I'm in the edit action"
+    @campaign = Campaign.find(params[:id])
+  end
+
   private
 
   def campaign_params
