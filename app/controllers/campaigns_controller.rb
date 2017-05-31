@@ -12,11 +12,17 @@ class CampaignsController < ApplicationController
   end
 
   def create
-    @campaign = Campaign.new(params[:name])
+    @campaign = Campaign.new(campaign_params)
     if @campaign.save
-      redirect_to root_url
+      redirect_to campaign_url(@campaign.id)
     else
       render 'new'
     end
+  end
+
+  private
+
+  def campaign_params
+    params.require(:campaign).permit(:name)
   end
 end

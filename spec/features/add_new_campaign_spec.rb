@@ -17,4 +17,17 @@ RSpec.describe "Add a new campaign" do
 
     expect(Campaign.count).to eq(1)
   end
+
+  it "redirects to the campaign page after creation" do
+    visit new_campaign_path
+    within("form") do
+      fill_in "Name", :with => "Zealot"
+      click_button "Add campaign"
+    end
+
+    #expect(page.current_url).to match(/campaigns\/\d/)
+    expect(page).to have_content("This is the Zealot campaign!")
+
+
+  end
 end
