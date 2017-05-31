@@ -20,14 +20,20 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def update
+    @campaign = Campaign.find(params[:id])
+    if @campaign.update(campaign_params)
+      redirect_back(fallback_location: campaign_url(@campaign))
+    end
+  end
+
   def edit
-    puts "I'm in the edit action"
     @campaign = Campaign.find(params[:id])
   end
 
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name)
+    params.require(:campaign).permit(:name, :notes)
   end
 end
