@@ -1,5 +1,5 @@
 <h2>NOTES</h2>
-<%= form_for @campaign, url: {action: "update"}, html: {class: "notes_form"} do |f| %>
+<%= form_for @campaign, method: :put do |f| %>
     <%= f.text_area :notes, size: "60x12" %>
     <%= f.submit "Save" %>
 <% end %>
