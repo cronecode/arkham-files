@@ -6,6 +6,6 @@ RSpec.describe "Edit campaign notes" do
 
     visit edit_campaign_path(@campaign)
 
-    expect(page).to have_content("Hello there")
+    expect(page).to have_content(@campaign[:notes])
   end
 end
