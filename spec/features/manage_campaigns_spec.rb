@@ -9,7 +9,7 @@ RSpec.describe "Campaign Management", type: :feature do
       expect(page).to have_current_path("/campaigns/new")
     end
 
-    it "creates a new campaign" do
+    it "Create a new campaign" do
       visit new_campaign_path
       within("form") do
         fill_in "Name", :with => "Night of the Zealot"
@@ -20,16 +20,15 @@ RSpec.describe "Campaign Management", type: :feature do
     end
   end
 
-  describe "View campaign" do
+  describe "View a campaign" do
     it "redirects to the appropriate campaign page" do
-      Campaign.create(name: "Zealot")
-      Campaign.create(name: "Dunwich")
+      FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
-      click_link "Dunwich"
+      click_link "Dunwich Legacy"
 
-      expect(page).to have_current_path("/campaigns/2")
-      expect(page).to have_content("This is the Dunwich campaign!")
+      expect(page).to have_current_path("/campaigns/1")
+      expect(page).to have_content("This is the Dunwich Legacy campaign!")
     end
   end
 
@@ -42,39 +41,25 @@ RSpec.describe "Campaign Management", type: :feature do
     end
 
     it "displays the list of created campaigns" do
-      Campaign.create(name: "Zealot")
-      Campaign.create(name: "Dunwich")
+      FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
 
-      expect(page).to have_link("Zealot")
-      expect(page).to have_link("Dunwich")
+      expect(page).to have_link("Dunwich Legacy")
     end
   end
 
-  describe "Add campaign notes" do
+  describe "Add/edit campaign notes" do
     it "records notes on an existing campaign" do
-      @campaign = FactoryGirl.create(:campaign)
-      visit edit_campaign_path(@campaign)
+      campaign = FactoryGirl.create(:campaign)
+      visit edit_campaign_path(campaign)
 
-      page.fill_in @campaign[:notes], with: "Vital information"
+      page.fill_in campaign[:notes], with: "Vital information"
       click_button "Save"
       visit root_path
-      visit campaign_path(@campaign)
+      visit campaign_path(campaign)
 
       expect(page).to have_content("Vital information")
-    end
-  end
-
-
-  describe "Edit campaign notes" do
-
-    it "edits an existing campaign's notes" do
-      @campaign = FactoryGirl.create(:campaign)
-
-      visit edit_campaign_path(@campaign)
-
-      expect(page).to have_content(@campaign[:notes])
     end
   end
 end
