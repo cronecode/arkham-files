@@ -9,7 +9,7 @@ RSpec.describe "Campaign Management", type: :feature do
       expect(page).to have_current_path("/campaigns/new")
     end
 
-    it "creates a new campaign" do
+    it "Create a new campaign" do
       visit new_campaign_path
       within("form") do
         fill_in "Name", :with => "Night of the Zealot"
@@ -20,7 +20,7 @@ RSpec.describe "Campaign Management", type: :feature do
     end
   end
 
-  describe "View campaign" do
+  describe "View a campaign" do
     it "redirects to the appropriate campaign page" do
       Campaign.create(name: "Zealot")
       Campaign.create(name: "Dunwich")
@@ -63,18 +63,6 @@ RSpec.describe "Campaign Management", type: :feature do
       visit campaign_path(@campaign)
 
       expect(page).to have_content("Vital information")
-    end
-  end
-
-
-  describe "Edit campaign notes" do
-
-    it "edits an existing campaign's notes" do
-      @campaign = FactoryGirl.create(:campaign)
-
-      visit edit_campaign_path(@campaign)
-
-      expect(page).to have_content(@campaign[:notes])
     end
   end
 end
