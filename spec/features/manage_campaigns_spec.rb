@@ -22,8 +22,7 @@ RSpec.describe "Campaign Management", type: :feature do
 
   describe "View a campaign" do
     it "redirects to the appropriate campaign page" do
-      Campaign.create(name: "Zealot")
-      Campaign.create(name: "Dunwich")
+      FactoryGirl.create(:campaign)
 
       visit campaigns_path
       click_link "Dunwich"
@@ -42,17 +41,15 @@ RSpec.describe "Campaign Management", type: :feature do
     end
 
     it "displays the list of created campaigns" do
-      Campaign.create(name: "Zealot")
-      Campaign.create(name: "Dunwich")
+      FactoryGirl.create(:campaign)
 
       visit campaigns_path
 
-      expect(page).to have_link("Zealot")
       expect(page).to have_link("Dunwich")
     end
   end
 
-  describe "Add campaign notes" do
+  describe "Add/edit campaign notes" do
     it "records notes on an existing campaign" do
       @campaign = FactoryGirl.create(:campaign)
       visit edit_campaign_path(@campaign)
