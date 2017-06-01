@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "/campaign/:id" do
+RSpec.describe "/campaign/:id", type: :request do
   describe "#PUT" do
     it "updates the campaign's notes" do
       @campaign = FactoryGirl.create(:campaign)

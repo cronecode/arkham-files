@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "/campaigns" do
+RSpec.describe "/campaigns", type: :request do
   describe "POST#create" do
     it "creates a campaign with a valid name" do
 
