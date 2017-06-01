@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "/campaign/:id/edit", type: :request do
+RSpec.describe "/campaigns/:id/edit", type: :request do
   describe "GET#edit" do
     it "displays the Edit Campaign view" do
       campaign = FactoryGirl.create(:campaign)
