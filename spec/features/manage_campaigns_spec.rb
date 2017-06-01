@@ -22,13 +22,13 @@ RSpec.describe "Campaign Management", type: :feature do
 
   describe "View a campaign" do
     it "redirects to the appropriate campaign page" do
-      FactoryGirl.create(:campaign)
+      FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
-      click_link "Dunwich"
+      click_link "Dunwich Legacy"
 
-      expect(page).to have_current_path("/campaigns/2")
-      expect(page).to have_content("This is the Dunwich campaign!")
+      expect(page).to have_current_path("/campaigns/1")
+      expect(page).to have_content("This is the Dunwich Legacy campaign!")
     end
   end
 
@@ -41,23 +41,23 @@ RSpec.describe "Campaign Management", type: :feature do
     end
 
     it "displays the list of created campaigns" do
-      FactoryGirl.create(:campaign)
+      FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
 
-      expect(page).to have_link("Dunwich")
+      expect(page).to have_link("Dunwich Legacy")
     end
   end
 
   describe "Add/edit campaign notes" do
     it "records notes on an existing campaign" do
-      @campaign = FactoryGirl.create(:campaign)
-      visit edit_campaign_path(@campaign)
+      campaign = FactoryGirl.create(:campaign)
+      visit edit_campaign_path(campaign)
 
-      page.fill_in @campaign[:notes], with: "Vital information"
+      page.fill_in campaign[:notes], with: "Vital information"
       click_button "Save"
       visit root_path
-      visit campaign_path(@campaign)
+      visit campaign_path(campaign)
 
       expect(page).to have_content("Vital information")
     end
