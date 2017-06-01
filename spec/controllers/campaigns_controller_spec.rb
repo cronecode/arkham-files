@@ -11,9 +11,9 @@ RSpec.describe CampaignsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      @campaign = FactoryGirl.create(:campaign)
+      campaign = FactoryGirl.create(:campaign)
 
-      get :edit, params: { id: @campaign.id }
+      get :edit, params: { id: campaign.id }
 
       expect(response).to have_http_status(:success)
     end
