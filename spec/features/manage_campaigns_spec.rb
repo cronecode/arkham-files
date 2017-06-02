@@ -22,12 +22,12 @@ RSpec.describe "Campaign Management", type: :feature do
 
   describe "View a campaign" do
     it "redirects to the appropriate campaign page" do
-      FactoryGirl.create(:campaign, name: "Dunwich Legacy")
+      campaign = FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
       click_link "Dunwich Legacy"
 
-      expect(page).to have_current_path("/campaigns/1")
+      expect(page).to have_current_path("/campaigns/#{campaign.id}")
       expect(page).to have_content("This is the Dunwich Legacy campaign!")
     end
   end
