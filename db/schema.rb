@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531211351) do
+ActiveRecord::Schema.define(version: 20170602180712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,4 +22,13 @@ ActiveRecord::Schema.define(version: 20170531211351) do
     t.string "notes"
   end
 
+  create_table "scenarios", force: :cascade do |t|
+    t.string "name"
+    t.boolean "complete"
+    t.integer "campaign_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "scenarios", "campaigns", name: "scenarios_campaign_id_fk"
 end
