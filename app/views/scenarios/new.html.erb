@@ -1,0 +1,7 @@
+<h1>Scenarios#new</h1>
+<%= form_for([@campaign, @scenario]) do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %><br />
+
+    <%= f.submit "Add scenario" %>
+<% end %>
