@@ -6,9 +6,9 @@ RSpec.describe "/campaigns/:campaign_id/scenarios", type: :request do
       campaign = FactoryGirl.create(:campaign)
       expect do
         post campaign_scenarios_path(campaign.id), params: { scenario: { name: "The Telltale Heart" } }
-      end.to change { Campaign.count }.by(1)
+      end.to change { Scenario.count }.by(1)
 
-      expect(response).to redirect_to campaign_scenario_url(Scenario.last)
+      expect(response).to redirect_to campaign_scenario_path(campaign_id: campaign.id, id: Scenario.last.id)
     end
   end
 end
