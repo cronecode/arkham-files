@@ -1,4 +1,15 @@
-<h1>StaticPages#home</h1>
-<p>Welcome to the Arkham Files</p>
-<%= link_to("Add new campaign", new_campaign_path) %>
-<%= link_to("View my campaigns", campaigns_path) %>
+<div class="jumbotron">
+  <div class="container">
+    <h2>Welcome to the Arkham Files</h2>
+  </div>
+</div>
+
+<div class="container">
+  <a href="/campaigns" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> View my campaigns
+  </a>
+
+  <a href="/campaigns/new" class="btn btn-default btn-lg">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new campaign
+  </a>
+</div>
