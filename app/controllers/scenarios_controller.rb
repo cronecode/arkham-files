@@ -1,15 +1,15 @@
 class ScenariosController < ApplicationController
   def new
-    @campaign = Campaign.find params[:campaign_id]
+    # @campaign = Campaign.find params[:campaign_id]
     @scenario = Scenario.new(campaign: @campaign)
   end
 
   def create
-    @campaign = Campaign.find params[:campaign_id]
+    # @campaign = Campaign.find params[:campaign_id]
     @scenario = Scenario.new(scenario_params)
-    @campaign.scenarios << @scenario
+    # @campaign.scenarios << @scenario
     if @scenario.save
-      redirect_to campaign_scenario_path(@campaign, @scenario)
+      redirect_to scenario_path(@scenario)
     else
       render 'new'
     end
