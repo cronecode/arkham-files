@@ -1,12 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Campaign, type: :model do
-  it "does not exist before creation" do
-    expect(Campaign.count).to eq(0)
+  it "is valid" do
+    campaign = FactoryGirl.create(:campaign)
+
+    expect(campaign).to be_valid
   end
 
-  it "exists after creation" do
-    Campaign.create
-    expect(Campaign.count).to eq(1)
+  it "has a name" do
+    campaign = FactoryGirl.create(:campaign)
+
+    campaign.name = "     "
+
+    expect(campaign).to_not be_valid
   end
 end

@@ -1,6 +1,5 @@
 FactoryGirl.define do
   factory :scenario do
-    name "MyString"
     complete false
   end
   
