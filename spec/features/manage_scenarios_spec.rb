@@ -12,13 +12,18 @@ RSpec.describe "Scenario Management", type: :feature do
         click_button "Add scenario"
       end
 
-      expect(page).to have_content("The Gathering")
+      expect(Scenario.count).to eq(1)
     end
   end
 
   describe "View a scenario" do
     it "displays the scenario's information" do
+      campaign = FactoryGirl.create(:campaign)
+      scenario = Scenario.create(name: "The Gathering", campaign_id: campaign.id)
 
+      visit campaign_scenario_path(campaign, scenario)
+
+      expect(page).to have_content(Scenario.last.name)
     end
   end
 
