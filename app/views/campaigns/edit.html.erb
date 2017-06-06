@@ -1,5 +1,7 @@
-<h2>NOTES</h2>
 <%= form_for @campaign, method: :put do |f| %>
-    <%= f.text_area :notes, size: "60x12" %>
-    <%= f.submit "Save" %>
+    <div class="form-group">
+      <%= f.label :notes, "Notes" %>
+      <%= f.text_area :notes, size: "60x12", class: "form-control" %>
+      <%= f.submit "Save", class: "btn btn-default" %>
+    </div>
 <% end %>
