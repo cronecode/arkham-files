@@ -27,24 +27,18 @@ RSpec.describe "Campaign Management", type: :feature do
   end
 
   describe "View all campaigns" do
-    it "button redirects to /campaigns" do
-      visit root_path
-      click_link "View my campaigns"
-
-      expect(page).to have_current_path("/campaigns")
-    end
-
     it "displays the list of created campaigns" do
       FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
-      visit campaigns_path
+      visit root_path
+      click_link "View my campaigns"
 
       expect(page).to have_link("Dunwich Legacy")
     end
   end
 
   describe "Add/edit campaign notes" do
-    it "records notes on an existing campaign" do
+    it "saves notes on an existing campaign" do
       campaign = FactoryGirl.create(:campaign)
       visit edit_campaign_path(campaign)
 
