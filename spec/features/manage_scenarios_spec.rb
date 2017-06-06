@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Campaign Management", type: :feature do
+RSpec.describe "Scenario Management", type: :feature do
   describe "Add a new scenario" do
     it "creates a scenario" do
       campaign = FactoryGirl.create(:campaign)
