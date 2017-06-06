@@ -1,4 +1,4 @@
 <h1>Campaigns#index</h1>
-<%= @campaigns.each do |campaign| %>
+<% @campaigns.each do |campaign| %>
     <li><%= link_to campaign.name, campaign_path(campaign) %></li>
 <% end %>
