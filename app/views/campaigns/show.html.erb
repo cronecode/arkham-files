@@ -5,6 +5,7 @@
   <li><%= link_to scenario.name, campaign_scenario_path(@campaign, scenario) %></li>
 <% end %>
 </ul>
+<%= link_to "Add Scenario", new_campaign_scenario_path(@campaign) %>
 <h3>Notes:</h3>
 <p><%= @campaign.notes %></p>
 <%= link_to "Edit", edit_campaign_path(@campaign) %>
