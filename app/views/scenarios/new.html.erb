@@ -1,7 +1,9 @@
 <h1>Scenarios#new</h1>
 <%= form_for(@scenario) do |f| %>
     <%= f.label :name %>:
-    <%= f.text_field :name %><br />
+    <%= f.text_field :name %>
+    <%= render 'shared/error_messages', :target => @scenario %>
+    <br />
 
     <%= f.submit "Add scenario" %>
 <% end %>
