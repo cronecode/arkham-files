@@ -2,15 +2,10 @@ require 'rails_helper'
 
 RSpec.describe "Campaign Management", type: :feature do
   describe "Add a new campaign" do
-    it "button redirects to campaigns/new" do
+    it "Creates a new campaign" do
       visit root_path
       click_link "Add new campaign"
 
-      expect(page).to have_current_path("/campaigns/new")
-    end
-
-    it "Create a new campaign" do
-      visit new_campaign_path
       within("form") do
         fill_in "Name", :with => "Night of the Zealot"
         click_button "Add campaign"
