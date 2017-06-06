@@ -24,6 +24,15 @@ RSpec.describe "Campaign Management", type: :feature do
 
       expect(page).to have_content(campaign.notes)
     end
+
+    it "displays a list of the campaign's scenarios" do
+      campaign = FactoryGirl.create(:campaign)
+      scenario = FactoryGirl.create(:scenario, campaign: campaign, name: "The Gathering")
+
+      visit campaign_path(campaign.id)
+
+      expect(page).to have_link "The Gathering"
+    end
   end
 
   describe "View all campaigns" do
