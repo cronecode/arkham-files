@@ -1,9 +1,8 @@
-<h1>Scenarios#new</h1>
 <%= form_for(@scenario) do |f| %>
-    <%= f.label :name %>:
-    <%= f.text_field :name %>
     <%= render 'shared/error_messages', :target => @scenario %>
-    <br />
-
-    <%= f.submit "Add scenario" %>
+    <div class="form-group">
+      <%= f.label :name %>:
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <%= f.submit "Add scenario", class: "btn btn-primary" %>
 <% end %>
