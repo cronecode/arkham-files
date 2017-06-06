@@ -32,7 +32,4 @@ RSpec.describe "Scenario Management", type: :feature do
 
     end
   end
-
 end
-
-

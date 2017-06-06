@@ -61,4 +61,3 @@ RSpec.describe "Campaign Management", type: :feature do
   end
 end
 
-
