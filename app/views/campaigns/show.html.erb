@@ -1,4 +1,10 @@
 <span>This is the <%= @campaign.name %> campaign!</span>
+<h3>Scenarios:</h3>
+<ul>
+<% @campaign.scenarios.each do |scenario| %>
+  <li><%= link_to scenario.name, scenario_path(scenario) %></li>
+<% end %>
+</ul>
 <h3>Notes:</h3>
 <p><%= @campaign.notes %></p>
 <%= link_to "Edit", edit_campaign_path(@campaign) %>
