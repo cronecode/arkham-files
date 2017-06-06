@@ -2,7 +2,7 @@
 <h3>Scenarios:</h3>
 <ul>
 <% @campaign.scenarios.each do |scenario| %>
-  <li><%= link_to scenario.name, scenario_path(scenario) %></li>
+  <li><%= link_to scenario.name, campaign_scenario_path(@campaign, scenario) %></li>
 <% end %>
 </ul>
 <h3>Notes:</h3>

@@ -1,12 +1,14 @@
 class ScenariosController < ApplicationController
   def new
+    @campaign = Campaign.find(params[:campaign_id])
     @scenario = Scenario.new
   end
 
   def create
-    @scenario = Scenario.new(scenario_params)
+    @campaign = Campaign.find(params[:campaign_id])
+    @scenario = Scenario.new(scenario_params.merge(campaign: @campaign))
     if @scenario.save
-      redirect_to scenario_path(@scenario)
+      redirect_to campaign_scenario_path(@campaign, @scenario)
     else
       render 'new'
     end
@@ -19,6 +21,6 @@ class ScenariosController < ApplicationController
   private
 
   def scenario_params
-    params.require(:scenario).permit(:name, :campaign_id)
+    params.require(:scenario).permit(:name)
   end
 end
