@@ -9,7 +9,7 @@ RSpec.describe Campaign, type: :model do
 
   it "has a name" do
     campaign = FactoryGirl.create(:campaign)
-    
+
     campaign.name = "     "
 
     expect(campaign).to_not be_valid
