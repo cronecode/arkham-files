@@ -1,12 +1,23 @@
-//.vertical-center {
-//  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-//  min-height: 100vh; /* These two lines are counted as one :-)       */
-//}
-//
-//.container {
-//  display: flex;
-//  flex-flow: row wrap;
-//  justify-content: space-around;
-//}
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC');
 
-$body-bg: rgb(113, 158, 126);
+
+$body-bg: rgb(54, 65, 67);
+
+// Typography
+
+* {
+  font-family: 'IM Fell DW Pica SC', serif;
+  font-size: 25px;
+}
+
+.form-control {
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+}
+
+.text-center {
+  margin-bottom: 20px;
+}
