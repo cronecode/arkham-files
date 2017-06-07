@@ -1,23 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC');
 
+$text-color: black;
+$navbar-default-link-color: black;
 
-$body-bg: rgb(54, 65, 67);
-
-// Typography
+body {
+  background-image: url('cthulhu.jpg');
+}
 
 * {
   font-family: 'IM Fell DW Pica SC', serif;
   font-size: 25px;
 }
 
-.form-control {
-  font-size: 20px;
-}
-
-.navbar-brand {
-  font-size: 30px;
-}
-
 .text-center {
   margin-bottom: 20px;
+}
+
+ul {
+  list-style-image: url('devourer-icon-17x19.png');
 }
