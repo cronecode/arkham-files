@@ -57,4 +57,12 @@ RSpec.describe Scenario, type: :model do
 
     expect(scenario).to_not be_valid
   end
+
+  it "may have a resolution" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, resolution: 0)
+
+    expect(scenario).to be_valid
+    expect(scenario.resolution).to eq("no_resolution")
+  end
 end
