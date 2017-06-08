@@ -25,4 +25,15 @@ RSpec.describe Scenario, type: :model do
 
     expect(scenario).to_not be_valid
   end
+
+  it "may have notes" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, notes: "I'm a note!")
+
+    expect(scenario).to be_valid
+  end
+
+  it "if notes are present, they are not empty" do
+
+  end
 end
