@@ -1,12 +1,30 @@
-//.vertical-center {
-//  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-//  min-height: 100vh; /* These two lines are counted as one :-)       */
-//}
-//
-//.container {
-//  display: flex;
-//  flex-flow: row wrap;
-//  justify-content: space-around;
-//}
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+DW+Pica+SC');
 
-$body-bg: rgb(113, 158, 126);
+$text-color: black;
+$navbar-default-link-color: black;
+
+body {
+  background-image: url('cthulhu.jpg');
+}
+
+* {
+  font-family: 'IM Fell DW Pica SC', serif;
+  font-size: 25px;
+}
+
+.text-center {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-image: url('devourer-icon-inverted.png');
+  margin-left: 33%;
+}
+
+li {
+  padding-left: 30px;
+  padding-top: 10px;
+  a {
+    color: lightgrey;
+  }
+}
