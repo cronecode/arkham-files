@@ -41,4 +41,20 @@ RSpec.describe Scenario, type: :model do
 
     expect(scenario).to_not be_valid
   end
+
+  it "may have victory_display" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, victory_display: 0)
+
+    expect(scenario).to be_valid
+  end
+
+  it "victory_display is a non-negative integer" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, victory_display: 0)
+
+    scenario.victory_display = -1
+
+    expect(scenario).to_not be_valid
+  end
 end

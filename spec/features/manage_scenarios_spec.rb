@@ -19,7 +19,7 @@ RSpec.describe "Scenario Management", type: :feature do
   describe "View a scenario" do
     it "displays the scenario's information" do
       campaign = FactoryGirl.create(:campaign)
-      scenario = Scenario.create(name: "The Gathering", campaign_id: campaign.id)
+      scenario = FactoryGirl.create(:scenario, name: "The Gathering", campaign_id: campaign.id)
 
       visit campaign_scenario_path(campaign, scenario)
 
