@@ -1,6 +1,8 @@
 class Scenario < ApplicationRecord
   belongs_to :campaign
 
+  enum resolution: [:no_resolution, :R1, :R2, :R3]
+
   validates :name, presence: true
   validates :campaign_id, presence: true
   validates :notes, length: { minimum: 1 }, if: :notes_present?
