@@ -17,5 +17,14 @@ body {
 }
 
 ul {
-  list-style-image: url('devourer-icon-17x19.png');
+  list-style-image: url('devourer-icon-inverted.png');
+  margin-left: 33%;
+}
+
+li {
+  padding-left: 30px;
+  padding-top: 10px;
+  a {
+    color: lightgrey;
+  }
 }
