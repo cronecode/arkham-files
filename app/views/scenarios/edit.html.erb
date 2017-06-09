@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <%= form_for ([@campaign, @scenario]), method: :put do |f| %>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :victory_display %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.number_field :victory_display, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :resolution %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.select(:resolution, [["no resolution", 0], ["R1", 1], ["R2", 2], ["R3", 3]], { include_blank: true }, class: "form-control") %>
+            </div>
+          </div>
+          <%= f.submit "Save", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
