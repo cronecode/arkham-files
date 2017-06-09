@@ -36,11 +36,14 @@ RSpec.describe "Scenario Management", type: :feature do
       click_link "Resolve"
 
       within("form") do
-        fill_in "Victory Display", with: 10
-        select 'R2', from: 'Resolution'
+        fill_in "Victory display", with: 10
+        select "R2", from: "Resolution"
         click_button "Save"
       end
 
+      visit campaign_scenario_path(campaign, scenario)
+
+      expect(page).to have_content(10)
       expect(page).to have_content("R2")
     end
   end
