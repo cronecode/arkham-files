@@ -29,7 +29,19 @@ RSpec.describe "Scenario Management", type: :feature do
 
   describe "Resolve a scenario" do
     it "records the outcome of a completed scenario" do
+      campaign = FactoryGirl.create(:campaign)
+      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign_id: campaign.id)
 
+      visit campaign_scenario_path(campaign, scenario)
+      click_link "Resolve"
+
+      within("form") do
+        fill_in "Victory Display", with: 10
+        select 'R2', from: 'Resolution'
+        click_button "Save"
+      end
+
+      expect(page).to have_content("R2")
     end
   end
 end
