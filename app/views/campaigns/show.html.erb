@@ -1,11 +1,30 @@
-<span>This is the <%= @campaign.name %> campaign!</span>
-<h3>Scenarios:</h3>
-<ul>
-<% @campaign.scenarios.each do |scenario| %>
-  <li><%= link_to scenario.name, campaign_scenario_path(@campaign, scenario) %></li>
-<% end %>
-</ul>
-<%= link_to "Add Scenario", new_campaign_scenario_path(@campaign) %>
-<h3>Notes:</h3>
-<p><%= @campaign.notes %></p>
-<%= link_to "Edit", edit_campaign_path(@campaign) %>
+<div class="container-fluid">
+  <div class="row space-below space-above">
+    <div class="col-xs-6">
+      <a href="<%= new_campaign_scenario_path(@campaign) %>" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new scenario
+      </a>
+    </div>
+    <div class="col-xs-6 text-right">
+      <a href="<%= edit_campaign_path(@campaign) %>" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit notes
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="thumbnail">
+        <ul>
+          <% @campaign.scenarios.each do |scenario| %>
+          <li><%= link_to scenario.name, campaign_scenario_path(@campaign, scenario) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="col-xs-6 text-center">
+      <div class="thumbnail">
+        <p><%= @campaign.notes %></p>
+      </div>
+    </div>
+  </div>
+</div>

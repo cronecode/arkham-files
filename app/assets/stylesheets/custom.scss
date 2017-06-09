@@ -2,6 +2,7 @@
 
 $text-color: black;
 $navbar-default-link-color: black;
+$link-hover-decoration: none;
 
 body {
   background-image: url('cthulhu.jpg');
@@ -17,14 +18,25 @@ body {
 }
 
 ul {
-  list-style-image: url('devourer-icon-inverted.png');
-  margin-left: 33%;
+  list-style-image: url('devourer-icon-17x19.png');
 }
 
 li {
   padding-left: 30px;
   padding-top: 10px;
   a {
-    color: lightgrey;
+    color: darkcyan;
   }
+}
+
+.space-above {
+  margin-top: 50px;
+}
+
+.space-below {
+  margin-bottom: 30px;
+}
+
+p {
+  padding: 10px;
 }
