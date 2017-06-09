@@ -23,7 +23,7 @@ class ScenariosController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @scenario = Scenario.find(params[:id])
     if @scenario.update(scenario_params)
-      redirect_back(fallback_location: campaign_scenario_path(@campaign, @scenario))
+      redirect_to campaign_scenario_path(@campaign, @scenario)
     else
       render 'edit'
     end
