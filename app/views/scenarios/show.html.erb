@@ -1,1 +1,10 @@
-<%= @scenario.name %>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <%= @scenario.name %>
+      <a href="<%= edit_campaign_scenario_path(@scenario)%>" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Resolve
+      </a>
+    </div>
+  </div>
+</div>
