@@ -18,6 +18,11 @@ class ScenariosController < ApplicationController
     @scenario = Scenario.find(params[:id])
   end
 
+  def edit
+    @campaign = Campaign.find(params[:campaign_id])
+    @scenario = Scenario.find(params[:id])
+  end
+
   private
 
   def scenario_params
