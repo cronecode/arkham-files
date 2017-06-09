@@ -41,8 +41,6 @@ RSpec.describe "Scenario Management", type: :feature do
         click_button "Save"
       end
 
-      visit campaign_scenario_path(campaign, scenario)
-
       expect(page).to have_content(10)
       expect(page).to have_content("R2")
     end
