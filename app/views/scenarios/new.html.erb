@@ -1,8 +1,36 @@
-<%= form_for([@campaign, @scenario]) do |f| %>
-    <%= render 'shared/error_messages', :target => @scenario %>
-    <div class="form-group">
-      <%= f.label :name %>:
-      <%= f.text_field :name, class: "form-control" %>
+<div class="row">
+  <div class="col-xs-8">
+    <div class="thumbnail">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <%= @campaign.name %>
+        </div>
+      </div>
+      <%= form_for([@campaign, @scenario]) do |f| %>
+        <%= render 'shared/error_messages', :target => @scenario %>
+        <div class="row form-group">
+          <div class="col-xs-3">
+            <%= f.label :order, "Scenario #" %>
+          </div>
+          <div class="col-xs-1">
+            <%= f.number_field :order, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row form-group">
+          <div class="col-xs-3">
+            <%= f.label :name, "Name" %>:
+          </div>
+          <div class="col-xs-4">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-8"></div>
+          <div class="col-xs-4 text-center">
+            <%= f.submit "Add scenario", class: "btn btn-lg btn-primary" %>
+      <% end %>
+          </div>
+        </div>
     </div>
-    <%= f.submit "Add scenario", class: "btn btn-primary" %>
-<% end %>
+  </div>
+</div>
