@@ -56,7 +56,7 @@ RSpec.describe "Scenario Management", type: :feature do
 
       visit campaign_path(campaign)
       click_link "Midnight Masks"
-      click_button "Delete"
+      click_link "Delete"
 
       expect(page).to_not have_link("Midnight Masks")
     end
