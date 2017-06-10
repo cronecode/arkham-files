@@ -48,4 +48,17 @@ RSpec.describe "Scenario Management", type: :feature do
       expect(page).to have_content("Something notable")
     end
   end
+
+  describe "Remove a scenario" do
+    it "deletes an existing scenario" do
+      campaign = FactoryGirl.create(:campaign)
+      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign_id: campaign.id)
+
+      visit campaign_path(campaign)
+      click_link "Midnight Masks"
+      click_button "Delete"
+
+      expect(page).to_not have_link("Midnight Masks")
+    end
+  end
 end
