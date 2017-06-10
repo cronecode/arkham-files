@@ -65,4 +65,32 @@ RSpec.describe Scenario, type: :model do
     expect(scenario).to be_valid
     expect(scenario.resolution).to eq("no_resolution")
   end
+
+  it "is ordered within the campaign" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, order: 3)
+
+    scenario.order = nil
+
+    expect(scenario).to_not be_valid
+  end
+
+  it "#order is an integer >= 1" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, order: 3)
+
+    scenario.order = 0
+
+    expect(scenario).to_not be_valid
+  end
+
+  it "#order is unique among the campaign's scenarios" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, order: 3)
+    scenario2 = FactoryGirl.create(:scenario, name: "Bar", campaign_id: campaign.id, order: 4)
+
+    scenario2.order = 3
+
+    expect(scenario).to_not be_valid
+  end
 end
