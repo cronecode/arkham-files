@@ -14,4 +14,13 @@ RSpec.describe Campaign, type: :model do
 
     expect(campaign).to_not be_valid
   end
+
+  it "removes its scenarios when deleted" do
+    campaign = FactoryGirl.create(:campaign)
+    scenario = FactoryGirl.create(:scenario, campaign_id: campaign.id)
+
+    expect do
+      campaign.destroy
+    end.to change { Scenario.count }.by(-1)
+  end
 end

@@ -23,10 +23,17 @@
         </div>
       </div>
 
-      <div class="row text-center">
-        <a href="<%= edit_campaign_scenario_path(@campaign, @scenario)%>" class="btn btn-default btn-lg">
-          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Resolve
-        </a>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <a href="<%= edit_campaign_scenario_path(@campaign, @scenario)%>" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-random" aria-hidden="true"></span> Resolve
+          </a>
+        </div>
+        <div class="col-xs-6 text-center">
+          <a href="<%= campaign_scenario_path(@campaign, @scenario)%>" data-method="delete" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+          </a>
+        </div>
       </div>
     </div>
   </div>
