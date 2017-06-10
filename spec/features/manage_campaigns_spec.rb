@@ -59,5 +59,16 @@ RSpec.describe "Campaign Management", type: :feature do
       expect(page).to have_content("Vital information")
     end
   end
+
+  describe "Remove campaign" do
+    it "deletes an existing campaign" do
+      campaign = FactoryGirl.create(:campaign, name: "Dunwich Legacy")
+
+      visit campaigns_path
+      click_link "Remove"
+
+      expect(page).to_not have_content("Dunwich Legacy")
+    end
+  end
 end
 
