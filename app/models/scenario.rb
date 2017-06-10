@@ -7,6 +7,7 @@ class Scenario < ApplicationRecord
   validates :campaign_id, presence: true
   validates :notes, length: { minimum: 1 }, if: :notes_present?
   validates :victory_display, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, if: :victory_display_present?
+  validates :order, numericality: { only_integer: true, greater_than_or_equal_to: 1 }
 
   before_validation do
     self.notes = self.notes.strip if notes_present?
