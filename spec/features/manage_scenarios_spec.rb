@@ -38,11 +38,13 @@ RSpec.describe "Scenario Management", type: :feature do
       within("form") do
         fill_in "Victory display", with: 10
         select "R2", from: "Resolution"
+        fill_in "Notes", with: "Something notable"
         click_button "Save"
       end
 
       expect(page).to have_content(10)
       expect(page).to have_content("R2")
+      expect(page).to have_content("Something notable")
     end
   end
 end
