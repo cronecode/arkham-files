@@ -91,6 +91,6 @@ RSpec.describe Scenario, type: :model do
 
     scenario2.order = 3
 
-    expect(scenario).to_not be_valid
+    expect(scenario2).to_not be_valid
   end
 end
