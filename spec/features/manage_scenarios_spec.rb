@@ -8,7 +8,8 @@ RSpec.describe "Scenario Management", type: :feature do
       click_link "Add Scenario"
 
       within("form") do
-        fill_in "Name", :with => "The Gathering"
+        fill_in "Name", with: "The Gathering"
+        fill_in "Scenario #", with: 1
         click_button "Add scenario"
       end
 

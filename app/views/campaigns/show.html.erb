@@ -15,7 +15,7 @@
     <div class="col-xs-6">
       <div class="thumbnail">
         <ul>
-          <% @campaign.scenarios.each do |scenario| %>
+          <% @scenarios.each do |scenario| %>
           <li><%= link_to scenario.name, campaign_scenario_path(@campaign, scenario) %></li>
           <% end %>
         </ul>

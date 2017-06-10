@@ -37,6 +37,6 @@ class ScenariosController < ApplicationController
   private
 
   def scenario_params
-    params.require(:scenario).permit(:name, :victory_display, :resolution, :notes)
+    params.require(:scenario).permit(:name, :victory_display, :resolution, :notes, :order)
   end
 end

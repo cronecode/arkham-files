@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :scenario do
     complete false
+    order 1
   end
   
   factory :campaign do
