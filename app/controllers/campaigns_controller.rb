@@ -32,6 +32,11 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
   end
 
+  def destroy
+    Campaign.find(params[:id]).destroy
+    redirect_to campaigns_path
+  end
+
   private
 
   def campaign_params

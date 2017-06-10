@@ -65,7 +65,7 @@ RSpec.describe "Campaign Management", type: :feature do
       campaign = FactoryGirl.create(:campaign, name: "Dunwich Legacy")
 
       visit campaigns_path
-      click_link "Remove"
+      click_link "Delete"
 
       expect(page).to_not have_content("Dunwich Legacy")
     end
