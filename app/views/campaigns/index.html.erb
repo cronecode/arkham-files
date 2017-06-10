@@ -1,5 +1,22 @@
-<ul>
-<% @campaigns.each do |campaign| %>
-    <li><%= link_to campaign.name, campaign_path(campaign) %></li>
-<% end %>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="thumbnail space-above space-below">
+        <ul>
+          <% @campaigns.each do |campaign| %>
+              <div class="row text-left">
+                <div class="col-xs-7">
+                  <li class="space-below"><%= link_to campaign.name, campaign_path(campaign) %></li>
+                </div>
+                <div class="col-xs-3 text-right">
+                  <a href="<%= campaign_path(campaign)%>" data-method="delete" class="btn btn-danger btn-lg space-below">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+                  </a>
+                </div>
+              </div>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
