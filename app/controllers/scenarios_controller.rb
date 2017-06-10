@@ -34,6 +34,13 @@ class ScenariosController < ApplicationController
     @scenario = Scenario.find(params[:id])
   end
 
+  def destroy
+    @campaign = Campaign.find(params[:campaign_id])
+    Scenario.find(params[:id]).destroy
+    redirect_to campaign_path(@campaign)
+
+  end
+
   private
 
   def scenario_params
