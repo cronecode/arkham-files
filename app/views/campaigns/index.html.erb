@@ -9,13 +9,20 @@
                   <li class="space-below"><%= link_to campaign.name, campaign_path(campaign) %></li>
                 </div>
                 <div class="col-xs-3 text-right">
-                  <a href="<%= campaign_path(campaign)%>" data-method="delete" class="btn btn-danger btn-lg space-below">
+                  <a href="<%= campaign_path(campaign)%>" data-method="delete" class="btn btn-danger btn-md space-below">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
                   </a>
                 </div>
               </div>
           <% end %>
         </ul>
+        <div class="row">
+          <div class="col-xs-12 text-left">
+            <a href="/campaigns/new" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Campaign
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

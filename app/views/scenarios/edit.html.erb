@@ -26,7 +26,18 @@
               <%= f.text_area :notes, rows: 10, class: "form-control" %>
             </div>
           </div>
-          <%= f.submit "Save", class: "btn btn-primary" %>
+          <div class="row">
+            <div class="col-xs-6 text-right">
+              <a href="<%= campaign_scenario_path(@campaign, @scenario)%>" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Cancel
+              </a>
+            </div>
+            <div class="col-xs-6 text-left">
+              <%= button_tag(class: "btn btn-default btn-lg") do %>
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+              <% end %>
+            </div>
+          </div>
       <% end %>
     </div>
   </div>

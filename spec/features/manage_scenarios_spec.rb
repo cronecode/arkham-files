@@ -10,7 +10,7 @@ RSpec.describe "Scenario Management", type: :feature do
       within("form") do
         fill_in "Name", with: "The Gathering"
         fill_in "Scenario #", with: 1
-        click_button "Add scenario"
+        click_button "Save"
       end
 
       expect(Scenario.count).to eq(1)

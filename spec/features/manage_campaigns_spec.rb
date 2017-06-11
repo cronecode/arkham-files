@@ -8,7 +8,7 @@ RSpec.describe "Campaign Management", type: :feature do
 
       within("form") do
         fill_in "Name", :with => "Night of the Zealot"
-        click_button "Add campaign"
+        click_button "Save"
       end
 
       expect(Campaign.count).to eq(1)
