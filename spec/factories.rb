@@ -1,4 +1,6 @@
 FactoryGirl.define do
+  factory :investigator do
+  end
   factory :scenario do
     name "The House Always Wins"
     complete false
