@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170610125316) do
+ActiveRecord::Schema.define(version: 20170612154913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20170610125316) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "notes"
+  end
+
+  create_table "investigators", force: :cascade do |t|
+    t.string "name"
+    t.integer "campaign_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "scenarios", force: :cascade do |t|
@@ -34,5 +41,6 @@ ActiveRecord::Schema.define(version: 20170610125316) do
     t.integer "order"
   end
 
+  add_foreign_key "investigators", "campaigns", name: "investigators_campaign_id_fk"
   add_foreign_key "scenarios", "campaigns", name: "scenarios_campaign_id_fk"
 end
