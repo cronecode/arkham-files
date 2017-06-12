@@ -15,6 +15,8 @@ class InvestigatorsController < ApplicationController
   end
 
   def show
+    @campaign = Campaign.find(params[:campaign_id])
+    @investigator = Investigator.find(params[:id])
   end
 
   private
