@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail space-above space-below text-center">
+      <%= form_for([@campaign, @investigator]) do |f| %>
+          <%= render 'shared/error_messages', :target => @investigator %>
+          <br />
+          <div class="row form-group">
+            <div class="col-xs-3">
+              <%= f.label :name %>:
+            </div>
+            <div class="col-xs-9">
+              <%= f.text_field :name, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 text-right">
+              <a href="/" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Cancel
+              </a>
+            </div>
+            <div class="col-xs-6 text-left">
+              <%= button_tag(class: "btn btn-default btn-lg") do %>
+                  <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
