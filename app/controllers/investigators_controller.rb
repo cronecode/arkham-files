@@ -14,6 +14,9 @@ class InvestigatorsController < ApplicationController
     end
   end
 
+  def show
+  end
+
   private
 
   def investigator_params
