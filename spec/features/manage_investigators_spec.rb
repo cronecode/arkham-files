@@ -5,6 +5,7 @@ RSpec.describe "Investigator Management", type: :feature do
     it "creates a investigator" do
       campaign = FactoryGirl.create(:campaign)
       visit campaign_path(campaign)
+      click_link "Add Investigator"
 
       expect do
         within("form") do
