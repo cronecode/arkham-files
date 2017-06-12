@@ -19,18 +19,19 @@ RSpec.describe "Investigator Management", type: :feature do
   describe "View investigator stats" do
     it "displays an investigator's information" do
       campaign = FactoryGirl.create(:campaign)
-      investigator = Investigator.new(name: "Skids",
-                                      campaign_id: campaign.id,
-                                      status: "Insane",
-                                      physical_trauma: 2,
-                                      mental_trauma: 6,
-                                      experience_earned: 10,
-                                      unspent_experience: 5)
+      FactoryGirl.create(:investigator,
+                         name:               "Skids",
+                         campaign_id:        campaign.id,
+                         status:             "Insane",
+                         physical_trauma:    2,
+                         mental_trauma:      6,
+                         experience_earned:  10,
+                         unspent_experience: 5)
 
       visit campaign_path(campaign)
       click_link "Skids"
 
-      expect(page).to have_field("Status", value: "Insane")
+      expect(page).to have_field("Status", with: "Insane")
       expect(page).to have_field("Physical Trauma", value: 2)
       expect(page).to have_field("Mental Trauma", value: 6)
       expect(page).to have_field("Experience Earned", value: 10)
