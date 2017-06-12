@@ -1,5 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Investigator, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a name" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.new(campaign_id: campaign.id,
+                                    name: "Rex Murphy")
+
+    expect(investigator).to be_valid
+  end
+
+  it "has a status" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.new(campaign_id: campaign.id,
+                                    name: "Rex Murphy",
+                                    status: "dead")
+
+    expect(investigator).to be_valid
+  end
 end

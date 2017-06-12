@@ -26,7 +26,7 @@ RSpec.describe "Investigator Management", type: :feature do
                                       mental_trauma: 6,
                                       experience_earned: 10,
                                       unspent_experience: 5)
-      
+
       visit campaign_path(campaign)
       click_link "Skids"
 
