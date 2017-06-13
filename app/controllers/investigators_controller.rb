@@ -18,6 +18,21 @@ class InvestigatorsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.find(params[:id])
   end
+  
+  def update
+    @campaign = Campaign.find(params[:campaign_id])
+    @investigator = Investigator.find(params[:id])
+    if @investigator.update(investigator_params)
+      redirect_to campaign_investigator_path(@campaign, @investigator)
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+    @campaign = Campaign.find(params[:campaign_id])
+    @investigator = Investigator.find(params[:id])
+  end
 
   private
 
