@@ -52,6 +52,7 @@ RSpec.describe "Investigator Management", type: :feature do
         fill_in "Mental Trauma", with: 6
         fill_in "Experience Earned", with: 10
         fill_in "Unspent Experience", with: 5
+        click_button "Save"
       end
       visit campaign_investigator_path(campaign, investigator)
 
