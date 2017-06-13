@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <%= form_for ([@campaign, @investigator]), method: :put do |f| %>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :status %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.select(:status, ['active', 'killed', 'insane'], class: "form-control") %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :physical_trauma, "Physical Trauma" %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.number_field :physical_trauma, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :mental_trauma, "Mental Trauma" %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.number_field :mental_trauma, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :experience_earned, "Experience Earned" %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.number_field :experience_earned, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= f.label :unspent_experience, "Unspent Experience" %>:
+            </div>
+            <div class="col-xs-6">
+              <%= f.number_field :unspent_experience, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-6 text-right">
+              <a href="<%= campaign_investigator_path(@campaign, @investigator)%>" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Cancel
+              </a>
+            </div>
+            <div class="col-xs-6 text-left">
+              <%= button_tag(class: "btn btn-default btn-lg") do %>
+                  <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+              <% end %>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>
