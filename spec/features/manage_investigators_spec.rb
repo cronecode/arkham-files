@@ -22,7 +22,7 @@ RSpec.describe "Investigator Management", type: :feature do
       FactoryGirl.create(:investigator,
                          name:               "Skids",
                          campaign_id:        campaign.id,
-                         status:             "Insane",
+                         status:             "insane",
                          physical_trauma:    2,
                          mental_trauma:      6,
                          experience_earned:  10,
@@ -31,9 +31,7 @@ RSpec.describe "Investigator Management", type: :feature do
       visit campaign_path(campaign)
       click_link "Skids"
 
-      puts page.html
-
-      expect(page).to have_text("Status: Insane")
+      expect(page).to have_text("Status: insane")
       expect(page).to have_text("Physical Trauma: 2")
       expect(page).to have_text("Mental Trauma: 6")
       expect(page).to have_text("Experience Earned: 10")
