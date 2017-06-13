@@ -6,6 +6,7 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @scenarios = @campaign.scenarios.order(:order)
+    @investigators = @campaign.investigators
   end
 
   def new

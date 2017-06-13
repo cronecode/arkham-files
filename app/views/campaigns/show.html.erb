@@ -40,3 +40,14 @@
     </a>
   </div>
 </div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <ul>
+        <% @investigators.each do |investigator| %>
+            <li><%= link_to investigator.name, campaign_investigator_path(@campaign, investigator) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

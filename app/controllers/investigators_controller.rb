@@ -22,6 +22,8 @@ class InvestigatorsController < ApplicationController
   private
 
   def investigator_params
-    params.require(:investigator).permit(:name)
+    params.require(:investigator).permit(:name, :status, :physical_trauma,
+                                         :mental_trauma, :experience_earned,
+                                          :unspent_experience)
   end
 end

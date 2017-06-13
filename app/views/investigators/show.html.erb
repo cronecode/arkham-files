@@ -1,1 +1,58 @@
-<%= @investigator.name %>
+<div class="row">
+  <div class="col-xs-6">
+    <a href="<%= campaign_path(@campaign)%>" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+    </a>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-6">
+    <div class="thumbnail">
+      <div class="row">
+        <div class="col-xs-12 text-center">
+          <%= @investigator.name %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          Status:
+        </div>
+        <div class="col-xs-6">
+          <%= @investigator.status %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          Physical Trauma:
+        </div>
+        <div class="col-xs-6">
+          <%= @investigator.physical_trauma %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          Mental Trauma:
+        </div>
+        <div class="col-xs-6">
+          <%= @investigator.mental_trauma %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          Experience Earned:
+        </div>
+        <div class="col-xs-6">
+          <%= @investigator.experience_earned %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">
+          Unspent Experience:
+        </div>
+        <div class="col-xs-6">
+          <%= @investigator.unspent_experience %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
