@@ -19,6 +19,9 @@ class InvestigatorsController < ApplicationController
     @investigator = Investigator.find(params[:id])
   end
 
+  def edit
+  end
+
   private
 
   def investigator_params
