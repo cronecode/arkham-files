@@ -36,7 +36,30 @@ RSpec.describe "Investigator Management", type: :feature do
       expect(page).to have_text("Mental Trauma: 6")
       expect(page).to have_text("Experience Earned: 10")
       expect(page).to have_text("Unspent Experience: 5")
+    end
+  end
 
+  describe "Update investigator stats" do
+    it "edits an investigator's information" do
+      campaign = FactoryGirl.create(:campaign)
+      investigator = FactoryGirl.create(:investigator, name: "Pete", campaign_id: campaign.id)
+
+      visit campaign_investigator_path(campaign, investigator)
+      click_link "Update"
+      within "form" do
+        select "killed", from: "Status"
+        fill_in "Physical Trauma", with: 2
+        fill_in "Mental Trauma", with: 6
+        fill_in "Experience Earned", with: 10
+        fill_in "Unspent Experience", with: 5
+      end
+      visit campaign_investigator_path(campaign, investigator)
+
+      expect(page).to have_text("Status: killed")
+      expect(page).to have_text("Physical Trauma: 2")
+      expect(page).to have_text("Mental Trauma: 6")
+      expect(page).to have_text("Experience Earned: 10")
+      expect(page).to have_text("Unspent Experience: 5")
     end
   end
 end
