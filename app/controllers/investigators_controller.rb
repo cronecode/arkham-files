@@ -18,7 +18,7 @@ class InvestigatorsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.find(params[:id])
   end
-  
+
   def update
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.find(params[:id])
@@ -32,6 +32,12 @@ class InvestigatorsController < ApplicationController
   def edit
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.find(params[:id])
+  end
+
+  def destroy
+    @campaign = Campaign.find(params[:campaign_id])
+    Investigator.find(params[:id]).destroy
+    redirect_to campaign_path(@campaign)
   end
 
   private
