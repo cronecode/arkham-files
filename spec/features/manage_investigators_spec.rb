@@ -31,11 +31,13 @@ RSpec.describe "Investigator Management", type: :feature do
       visit campaign_path(campaign)
       click_link "Skids"
 
-      expect(page).to have_field("Status", with: "Insane")
-      expect(page).to have_field("Physical Trauma", value: 2)
-      expect(page).to have_field("Mental Trauma", value: 6)
-      expect(page).to have_field("Experience Earned", value: 10)
-      expect(page).to have_field("Unspent Experience", value: 5)
+      puts page.html
+
+      expect(page).to have_text("Status: Insane")
+      expect(page).to have_text("Physical Trauma: 2")
+      expect(page).to have_text("Mental Trauma: 6")
+      expect(page).to have_text("Experience Earned: 10")
+      expect(page).to have_text("Unspent Experience: 5")
 
     end
   end
