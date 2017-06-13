@@ -53,6 +53,13 @@
           <%= @investigator.unspent_experience %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <a href="<%= edit_campaign_investigator_path(@campaign, @investigator)%>" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Update
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
