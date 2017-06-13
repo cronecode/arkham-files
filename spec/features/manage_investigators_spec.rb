@@ -63,4 +63,17 @@ RSpec.describe "Investigator Management", type: :feature do
       expect(page).to have_text("Unspent Experience: 5")
     end
   end
+
+  describe "Remove an investigator" do
+    it "deletes an existing investigator" do
+      campaign = FactoryGirl.create(:campaign)
+      scenario = FactoryGirl.create(:investigator, name: "Daisy Walker", campaign_id: campaign.id)
+
+      visit campaign_path(campaign)
+      click_link "Daisy Walker"
+      click_link "Delete"
+
+      expect(page).to_not have_link("Daisy Walker")
+    end
+  end
 end
