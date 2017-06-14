@@ -22,7 +22,7 @@ RSpec.describe "Investigator Management", type: :feature do
       FactoryGirl.create(:investigator,
                          name:               "Skids",
                          campaign_id:        campaign.id,
-                         status:             "insane",
+                         status:             "INSANE",
                          physical_trauma:    2,
                          mental_trauma:      6,
                          experience_earned:  10,
@@ -31,7 +31,7 @@ RSpec.describe "Investigator Management", type: :feature do
       visit campaign_path(campaign)
       click_link "Skids"
 
-      expect(page).to have_text("Status: insane")
+      expect(page).to have_text("Status: INSANE")
       expect(page).to have_text("Physical Trauma: 2")
       expect(page).to have_text("Mental Trauma: 6")
       expect(page).to have_text("Experience Earned: 10")
@@ -47,7 +47,7 @@ RSpec.describe "Investigator Management", type: :feature do
       visit campaign_investigator_path(campaign, investigator)
       click_link "Update"
       within "form" do
-        select "killed", from: "Status"
+        select "KILLED", from: "Status"
         fill_in "Physical Trauma", with: 2
         fill_in "Mental Trauma", with: 6
         fill_in "Experience Earned", with: 10
@@ -56,7 +56,7 @@ RSpec.describe "Investigator Management", type: :feature do
       end
       visit campaign_investigator_path(campaign, investigator)
 
-      expect(page).to have_text("Status: killed")
+      expect(page).to have_text("Status: KILLED")
       expect(page).to have_text("Physical Trauma: 2")
       expect(page).to have_text("Mental Trauma: 6")
       expect(page).to have_text("Experience Earned: 10")
