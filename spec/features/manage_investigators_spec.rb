@@ -42,7 +42,7 @@ RSpec.describe "Investigator Management", type: :feature do
   describe "Update investigator stats" do
     it "edits an investigator's information" do
       campaign = FactoryGirl.create(:campaign)
-      investigator = FactoryGirl.create(:investigator, name: "Pete", campaign_id: campaign.id)
+      investigator = FactoryGirl.create(:investigator, name: "Pete", campaign: campaign)
 
       visit campaign_investigator_path(campaign, investigator)
       click_link "Update"
@@ -67,7 +67,7 @@ RSpec.describe "Investigator Management", type: :feature do
   describe "Remove an investigator" do
     it "deletes an existing investigator" do
       campaign = FactoryGirl.create(:campaign)
-      scenario = FactoryGirl.create(:investigator, name: "Daisy Walker", campaign_id: campaign.id)
+      investigator = FactoryGirl.create(:investigator, name: "Daisy Walker", campaign: campaign)
 
       visit campaign_path(campaign)
       click_link "Daisy Walker"
