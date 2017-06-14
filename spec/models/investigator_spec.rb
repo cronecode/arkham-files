@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Investigator, type: :model do
   it "should be valid" do
-    investigator = FactoryGirl.create(:investigator)
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
     expect(investigator).to be_valid
   end
 
   it "name should be present" do
-    investigator = FactoryGirl.create(:investigator)
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator.name = "      "
 
@@ -16,8 +18,9 @@ RSpec.describe Investigator, type: :model do
   end
 
   it "name should be unique" do
-    investigator_1 = FactoryGirl.create(:investigator, name: "Rex")
-    investigator_2 = FactoryGirl.create(:investigator, name: "Daisy")
+    campaign = FactoryGirl.create(:campaign)
+    investigator_1 = Investigator.create(campaign: campaign, name: "Rex")
+    investigator_2 = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator_2.name = "Rex"
 
@@ -25,7 +28,8 @@ RSpec.describe Investigator, type: :model do
   end
 
   it "is active by default" do
-    investigator = FactoryGirl.create(:investigator, name: "Rex Murphy")
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
     expect(investigator.status).to eq("ACTIVE")
   end
