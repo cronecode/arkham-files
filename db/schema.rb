@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612192115) do
+ActiveRecord::Schema.define(version: 20170614211513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,11 +27,11 @@ ActiveRecord::Schema.define(version: 20170612192115) do
     t.integer "campaign_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status"
-    t.integer "physical_trauma"
-    t.integer "mental_trauma"
-    t.integer "experience_earned"
-    t.integer "unspent_experience"
+    t.integer "status", default: 0
+    t.integer "physical_trauma", default: 0
+    t.integer "mental_trauma", default: 0
+    t.integer "experience_earned", default: 0
+    t.integer "unspent_experience", default: 0
   end
 
   create_table "scenarios", force: :cascade do |t|
