@@ -12,5 +12,6 @@ class Investigator < ApplicationRecord
     self.physical_trauma = 0
     self.mental_trauma = 0
     self.experience_earned = 0
+    self.unspent_experience = 0
   end
 end
