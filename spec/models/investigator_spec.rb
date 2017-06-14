@@ -1,12 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Investigator, type: :model do
-  it "has a name" do
+  it "should be valid" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy")
+    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id)
 
     expect(investigator).to be_valid
+  end
+
+  it "name should be present" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id)
+
+    investigator.name = "      "
+
+    expect(investigator).to_not be_valid
   end
 
   it "has a status" do
