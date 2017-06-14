@@ -11,5 +11,6 @@ class Investigator < ApplicationRecord
     self.status = "ACTIVE"
     self.physical_trauma = 0
     self.mental_trauma = 0
+    self.experience_earned = 0
   end
 end
