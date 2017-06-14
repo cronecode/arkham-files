@@ -17,6 +17,16 @@ RSpec.describe Investigator, type: :model do
     expect(investigator).to_not be_valid
   end
 
+  it "name should be unique" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator_1 = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex")
+    investigator_2 = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Daisy")
+
+    investigator_2.name = "Rex"
+
+    expect(investigator_2).to_not be_valid
+  end
+
   it "has a status" do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.new(campaign_id: campaign.id,
