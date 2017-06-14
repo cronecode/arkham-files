@@ -53,6 +53,13 @@ RSpec.describe Investigator, type: :model do
     expect(investigator).to be_valid
   end
 
+  it "has 0 mental trauma by default" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
+
+    expect(investigator.mental_trauma).to eq(0)
+  end
+
   it "has earned experience" do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.new(campaign_id: campaign.id,
