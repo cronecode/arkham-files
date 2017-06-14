@@ -91,4 +91,11 @@ RSpec.describe Investigator, type: :model do
 
     expect(investigator).to be_valid
   end
+
+  it "has 0 unspent experience by default" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
+
+    expect(investigator.unspent_experience).to eq(0)
+  end
 end
