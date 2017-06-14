@@ -3,6 +3,7 @@ class Investigator < ApplicationRecord
 
   enum status: [:ACTIVE, :KILLED, :INSANE]
 
+  validates :name, presence: true
   after_create :set_defaults
 
   private
