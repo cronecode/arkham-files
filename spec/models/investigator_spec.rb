@@ -5,32 +5,38 @@ RSpec.describe Investigator, type: :model do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator).to be_valid
+    valid = investigator.valid?
+
+    expect(valid).to eq(true)
   end
 
-  it "name should be present" do
+  it "should be invalid if name is empty" do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator.name = "      "
+    valid = investigator.valid?
 
-    expect(investigator).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "name should be unique" do
+  it "should be invalid if name is not unique" do
     campaign = FactoryGirl.create(:campaign)
     investigator_1 = Investigator.create(campaign: campaign, name: "Rex")
     investigator_2 = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator_2.name = "Rex"
+    valid = investigator_2.valid?
 
-    expect(investigator_2).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "is active by default" do
+  it "should be active by default" do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator.status).to eq("ACTIVE")
+    status = investigator.status
+
+    expect(status).to eq("ACTIVE")
   end
 end
