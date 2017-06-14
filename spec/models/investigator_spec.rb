@@ -27,6 +27,15 @@ RSpec.describe Investigator, type: :model do
     expect(investigator_2).to_not be_valid
   end
 
+  it "status should be present" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, status: "KILLED")
+
+    investigator.status = nil
+
+    expect(investigator).to_not be_valid
+  end
+
   it "has a status" do
     campaign = FactoryGirl.create(:campaign)
     investigator = Investigator.new(campaign_id: campaign.id,
