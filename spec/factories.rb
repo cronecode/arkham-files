@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :investigator do
     name "Zoey Samaras"
+    status "ACTIVE"
   end
   factory :scenario do
     name "The House Always Wins"
