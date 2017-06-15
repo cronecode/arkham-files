@@ -4,5 +4,5 @@ class Investigator < ApplicationRecord
   enum status: [:ACTIVE, :KILLED, :INSANE]
 
   validates :name, presence: true, uniqueness: true
-  validates :status, presence: true
+  validates :physical_trauma, numericality: { greater_than_or_equal_to: 0 }
 end
