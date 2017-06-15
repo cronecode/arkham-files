@@ -1,6 +1,12 @@
 class Investigator < ApplicationRecord
   belongs_to :campaign
 
+  POSSIBLE_INVESTIGATORS = {
+      DAISY_WALKER: 'Daisy Walker',
+      REX_MURPHY: 'Rex Murphy',
+      AGNES_BAKER: 'Agnes Baker'
+  }
+
   enum status: [:ACTIVE, :KILLED, :INSANE]
 
   ACTIVE = 'ACTIVE'
