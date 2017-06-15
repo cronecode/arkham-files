@@ -8,11 +8,11 @@ RSpec.describe "Investigator Management", type: :feature do
       click_link "Add Investigator"
 
       within("form") do
-        fill_in "Name", with: "Agnes Baker"
+        select "Daisy Walker", from: "Name"
         click_button "Save"
       end
 
-      expect(page).to have_content("Agnes Baker")
+      expect(page).to have_content("Daisy Walker")
     end
   end
 
