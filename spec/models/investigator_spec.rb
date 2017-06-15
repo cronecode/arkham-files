@@ -37,7 +37,7 @@ RSpec.describe Investigator, type: :model do
 
     status = investigator.status
 
-    expect(status).to eq("ACTIVE")
+    expect(status).to eq(Investigator::ACTIVE)
   end
 
   it "should be invalid with negative physical trauma" do

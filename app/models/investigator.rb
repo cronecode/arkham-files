@@ -3,6 +3,10 @@ class Investigator < ApplicationRecord
 
   enum status: [:ACTIVE, :KILLED, :INSANE]
 
+  ACTIVE = 'ACTIVE'
+  KILLED = 'KILLED'
+  INSANE = 'INSANE'
+
   validates :name, presence: true, uniqueness: true
   validates :physical_trauma, numericality: { greater_than_or_equal_to: 0 }
   validates :mental_trauma, numericality: { greater_than_or_equal_to: 0 }
