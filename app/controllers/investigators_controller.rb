@@ -2,6 +2,8 @@ class InvestigatorsController < ApplicationController
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.new
+
+    @names = remaining_investigators
   end
 
   def create
@@ -45,6 +47,12 @@ class InvestigatorsController < ApplicationController
   def investigator_params
     params.require(:investigator).permit(:name, :status, :physical_trauma,
                                          :mental_trauma, :experience_earned,
-                                          :unspent_experience)
+                                         :unspent_experience)
+  end
+
+  def remaining_investigators
+    Investigator::POSSIBLE_INVESTIGATORS.values.reject do |name|
+      Investigator.all.any? { |investigator| investigator.name == name }
+    end
   end
 end

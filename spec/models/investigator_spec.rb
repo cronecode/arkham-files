@@ -1,32 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Investigator, type: :model do
-  it "should be valid" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
-
-    valid = investigator.valid?
-
-    expect(valid).to eq(true)
-  end
-
   it "should be invalid if name is empty" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+    investigator = FactoryGirl.build(:investigator, name: "    ")
 
-    investigator.name = "      "
     valid = investigator.valid?
 
     expect(valid).to eq(false)
   end
 
   it "should be invalid if name is not unique" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator_1 = Investigator.create(campaign: campaign, name: "Rex")
-    investigator_2 = Investigator.create(campaign: campaign, name: "Agnes")
+    FactoryGirl.create(:investigator, name: "Rex")
+    investigator = FactoryGirl.build(:investigator, name: "Rex")
 
-    investigator_2.name = "Rex"
-    valid = investigator_2.valid?
+    valid = investigator.valid?
 
     expect(valid).to eq(false)
   end
@@ -41,40 +28,32 @@ RSpec.describe Investigator, type: :model do
   end
 
   it "should be invalid with negative physical trauma" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+    investigator = FactoryGirl.build(:investigator, physical_trauma: -1)
 
-    investigator.physical_trauma = -1
     valid = investigator.valid?
 
     expect(valid).to eq(false)
   end
 
   it "should be invalid with negative mental trauma" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+    investigator = FactoryGirl.build(:investigator, mental_trauma: -1)
 
-    investigator.mental_trauma = -1
     valid = investigator.valid?
 
     expect(valid).to eq(false)
   end
 
   it "should be invalid with negative earned experience" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+    investigator = FactoryGirl.build(:investigator, experience_earned: -1)
 
-    investigator.experience_earned = -1
     valid = investigator.valid?
 
     expect(valid).to eq(false)
   end
 
   it "should be invalid with negative unspent experience" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+    investigator = FactoryGirl.build(:investigator, unspent_experience: -1)
 
-    investigator.unspent_experience = -1
     valid = investigator.valid?
 
     expect(valid).to eq(false)

@@ -4,15 +4,16 @@ RSpec.describe "Investigator Management", type: :feature do
   describe "Add a new investigator" do
     it "creates a investigator" do
       campaign = FactoryGirl.create(:campaign)
+      investigator = Investigator::POSSIBLE_INVESTIGATORS.values.first
       visit campaign_path(campaign)
       click_link "Add Investigator"
 
       within("form") do
-        fill_in "Name", with: "Agnes Baker"
+        select investigator, from: "Name"
         click_button "Save"
       end
 
-      expect(page).to have_content("Agnes Baker")
+      expect(page).to have_content(investigator)
     end
   end
 
