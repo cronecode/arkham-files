@@ -59,4 +59,14 @@ RSpec.describe Investigator, type: :model do
 
     expect(valid).to eq(false)
   end
+
+  it "should be invalid with negative earned experience" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+
+    investigator.experience_earned = -1
+    valid = investigator.valid?
+
+    expect(valid).to eq(false)
+  end
 end
