@@ -39,4 +39,14 @@ RSpec.describe Investigator, type: :model do
 
     expect(status).to eq("ACTIVE")
   end
+
+  it "should be invalid with negative physical trauma" do
+    campaign = FactoryGirl.create(:campaign)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
+
+    investigator.physical_trauma = -1
+    valid = investigator.valid?
+
+    expect(valid).to eq(false)
+  end
 end
