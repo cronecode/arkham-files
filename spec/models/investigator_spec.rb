@@ -3,126 +3,80 @@ require 'rails_helper'
 RSpec.describe Investigator, type: :model do
   it "should be valid" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator).to be_valid
+    valid = investigator.valid?
+
+    expect(valid).to eq(true)
   end
 
-  it "name should be present" do
+  it "should be invalid if name is empty" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator.name = "      "
+    valid = investigator.valid?
 
-    expect(investigator).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "name should be unique" do
+  it "should be invalid if name is not unique" do
     campaign = FactoryGirl.create(:campaign)
-    investigator_1 = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex")
-    investigator_2 = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Daisy")
+    investigator_1 = Investigator.create(campaign: campaign, name: "Rex")
+    investigator_2 = Investigator.create(campaign: campaign, name: "Agnes")
 
     investigator_2.name = "Rex"
+    valid = investigator_2.valid?
 
-    expect(investigator_2).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "status should be present" do
+  it "should be active by default" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, status: "KILLED")
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    investigator.status = nil
+    status = investigator.status
 
-    expect(investigator).to_not be_valid
+    expect(status).to eq(Investigator::ACTIVE)
   end
 
-  it "has a status" do
+  it "should be invalid with negative physical trauma" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy",
-                                    status: "KILLED")
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator).to be_valid
+    investigator.physical_trauma = -1
+    valid = investigator.valid?
+
+    expect(valid).to eq(false)
   end
 
-  it "is active by default" do
+  it "should be invalid with negative mental trauma" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator.status).to eq("ACTIVE")
+    investigator.mental_trauma = -1
+    valid = investigator.valid?
+
+    expect(valid).to eq(false)
   end
 
-  it "has physical trauma" do
+  it "should be invalid with negative earned experience" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy",
-                                    status: "KILLED",
-                                    physical_trauma: 4)
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator).to be_valid
+    investigator.experience_earned = -1
+    valid = investigator.valid?
+
+    expect(valid).to eq(false)
   end
 
-  it "has 0 physical trauma by default" do
+  it "should be invalid with negative unspent experience" do
     campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
+    investigator = Investigator.create(campaign: campaign, name: "Agnes")
 
-    expect(investigator.physical_trauma).to eq(0)
-  end
+    investigator.unspent_experience = -1
+    valid = investigator.valid?
 
-  it "has mental trauma" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy",
-                                    status: "KILLED",
-                                    physical_trauma: 4,
-                                    mental_trauma: 1)
-
-    expect(investigator).to be_valid
-  end
-
-  it "has 0 mental trauma by default" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
-
-    expect(investigator.mental_trauma).to eq(0)
-  end
-
-  it "has earned experience" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy",
-                                    status: "KILLED",
-                                    physical_trauma: 4,
-                                    mental_trauma: 1,
-                                    experience_earned: 20)
-
-    expect(investigator).to be_valid
-  end
-
-  it "has earned 0 experience by default" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
-
-    expect(investigator.experience_earned).to eq(0)
-  end
-
-  it "has unspent experience" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = Investigator.new(campaign_id: campaign.id,
-                                    name: "Rex Murphy",
-                                    status: "KILLED",
-                                    physical_trauma: 4,
-                                    mental_trauma: 1,
-                                    experience_earned: 20,
-                                    unspent_experience: 3)
-
-    expect(investigator).to be_valid
-  end
-
-  it "has 0 unspent experience by default" do
-    campaign = FactoryGirl.create(:campaign)
-    investigator = FactoryGirl.create(:investigator, campaign_id: campaign.id, name: "Rex Murphy")
-
-    expect(investigator.unspent_experience).to eq(0)
+    expect(valid).to eq(false)
   end
 end

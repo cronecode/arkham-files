@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :investigator do
+    campaign
     name "Zoey Samaras"
     status "ACTIVE"
   end
