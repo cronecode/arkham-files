@@ -3,7 +3,7 @@ class InvestigatorsController < ApplicationController
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.new
 
-    @names = ['Daisy Walker', 'Rex Murphy', 'Zoey Samaras']
+    @names = investigators
   end
 
   def create
@@ -48,5 +48,9 @@ class InvestigatorsController < ApplicationController
     params.require(:investigator).permit(:name, :status, :physical_trauma,
                                          :mental_trauma, :experience_earned,
                                           :unspent_experience)
+  end
+
+  def investigators
+    ['Daisy Walker', 'Rex Murphy', 'Zoey Samaras']
   end
 end
