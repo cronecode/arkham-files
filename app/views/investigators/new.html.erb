@@ -9,7 +9,7 @@
               <%= f.label :name %>:
             </div>
             <div class="col-xs-9">
-              <%= f.text_field :name, class: "form-control" %>
+              <%= f.select :name, options_for_select(@names), class: "form-control" %>
             </div>
           </div>
           <div class="row">

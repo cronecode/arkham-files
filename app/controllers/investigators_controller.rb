@@ -2,6 +2,8 @@ class InvestigatorsController < ApplicationController
   def new
     @campaign = Campaign.find(params[:campaign_id])
     @investigator = Investigator.new
+
+    @names = ['Daisy Walker', 'Rex Murphy', 'Zoey Samaras']
   end
 
   def create
