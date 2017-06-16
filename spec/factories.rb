@@ -11,5 +11,6 @@ FactoryGirl.define do
   end
   factory :campaign do
     name "Dunwich Legacy"
+    cycle "Night of the Zealot"
   end
 end
