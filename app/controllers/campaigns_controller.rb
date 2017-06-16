@@ -41,6 +41,6 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name, :notes)
+    params.require(:campaign).permit(:name, :notes, :cycle)
   end
 end
