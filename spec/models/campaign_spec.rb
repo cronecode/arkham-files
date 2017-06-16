@@ -15,6 +15,14 @@ RSpec.describe Campaign, type: :model do
     expect(campaign).to_not be_valid
   end
 
+  it "should be invalid without a valid cycle" do
+    campaign = FactoryGirl.build(:campaign, cycle: "Cycle Does Not Exist")
+
+    valid = campaign.valid?
+
+    expect(valid).to eq(false)
+  end
+
   it "removes its scenarios when deleted" do
     campaign = FactoryGirl.create(:campaign)
     scenario = FactoryGirl.create(:scenario, campaign_id: campaign.id)
