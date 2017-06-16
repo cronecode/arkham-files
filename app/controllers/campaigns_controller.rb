@@ -11,6 +11,7 @@ class CampaignsController < ApplicationController
 
   def new
     @campaign = Campaign.new
+    @cycles = Campaign::CYCLES.values
   end
 
   def create
