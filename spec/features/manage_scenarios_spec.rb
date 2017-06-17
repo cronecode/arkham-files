@@ -20,7 +20,7 @@ RSpec.describe "Scenario Management", type: :feature do
   describe "View a scenario" do
     it "displays the scenario's information" do
       campaign = FactoryGirl.create(:campaign)
-      scenario = FactoryGirl.create(:scenario, name: "The Gathering", campaign_id: campaign.id)
+      scenario = FactoryGirl.create(:scenario, name: "The Gathering", campaign: campaign)
 
       visit campaign_scenario_path(campaign, scenario)
 
@@ -31,7 +31,7 @@ RSpec.describe "Scenario Management", type: :feature do
   describe "Resolve a scenario" do
     it "records the outcome of a completed scenario" do
       campaign = FactoryGirl.create(:campaign)
-      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign_id: campaign.id)
+      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign: campaign)
 
       visit campaign_scenario_path(campaign, scenario)
       click_link "Resolve"
@@ -52,7 +52,7 @@ RSpec.describe "Scenario Management", type: :feature do
   describe "Remove a scenario" do
     it "deletes an existing scenario" do
       campaign = FactoryGirl.create(:campaign)
-      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign_id: campaign.id)
+      scenario = FactoryGirl.create(:scenario, name: "Midnight Masks", campaign: campaign)
 
       visit campaign_path(campaign)
       click_link "Midnight Masks"
