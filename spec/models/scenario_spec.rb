@@ -1,66 +1,53 @@
 require 'rails_helper'
 
 RSpec.describe Scenario, type: :model do
-  it "name should be present" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id)
+  it "should be invalid if name is blank" do
+    scenario = FactoryGirl.build(:scenario, name: "    ")
 
-    scenario.name = "    "
+    valid = scenario.valid?
 
-    expect(scenario).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "campaign id should be present" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id)
+  it "should be invalid without a campaign id" do
+    scenario = FactoryGirl.build(:scenario, campaign_id: nil)
 
-    scenario.campaign_id = nil
+    valid = scenario.valid?
 
-    expect(scenario).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "notes are not blank" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, notes: "I'm a note!")
+  it "should be invalid if notes are blank" do
+    scenario = FactoryGirl.build(:scenario, notes: "    ")
 
-    scenario.notes = "    "
+    valid = scenario.valid?
 
-    expect(scenario).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "victory_display is a non-negative integer" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, victory_display: 0)
+  it "should be invalid if victory_display is negative" do
+    scenario = FactoryGirl.build(:scenario, victory_display: -1)
 
-    scenario.victory_display = -1
+    valid = scenario.valid?
 
-    expect(scenario).to_not be_valid
+    expect(valid).to eq(false)
   end
 
-  it "may have a resolution" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, resolution: 0)
+  it "should be invalid if order is less than 1" do
+    scenario = FactoryGirl.build(:scenario, order: 0)
 
-    expect(scenario).to be_valid
-    expect(scenario.resolution).to eq("no_resolution")
+    valid = scenario.valid?
+
+    expect(valid).to eq(false)
   end
 
-  it "#order is an integer >= 1" do
+  it "should be invalid if order is not unique within the campaign" do
     campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, order: 3)
+    FactoryGirl.create(:scenario, campaign: campaign, order: 3)
+    scenario2 = FactoryGirl.build(:scenario, campaign: campaign, order: 3)
 
-    scenario.order = 0
+    valid = scenario2.valid?
 
-    expect(scenario).to_not be_valid
-  end
-
-  it "#order is unique among the campaign's scenarios" do
-    campaign = FactoryGirl.create(:campaign)
-    scenario = FactoryGirl.create(:scenario, name: "Foo", campaign_id: campaign.id, order: 3)
-    scenario2 = FactoryGirl.create(:scenario, name: "Bar", campaign_id: campaign.id, order: 4)
-
-    scenario2.order = 3
-
-    expect(scenario2).to_not be_valid
+    expect(valid).to eq(false)
   end
 end
