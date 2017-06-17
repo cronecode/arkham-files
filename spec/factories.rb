@@ -5,6 +5,7 @@ FactoryGirl.define do
     status "ACTIVE"
   end
   factory :scenario do
+    campaign
     name "The House Always Wins"
     complete false
     order 1
