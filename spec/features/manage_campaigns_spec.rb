@@ -15,6 +15,22 @@ RSpec.describe "Campaign Management", type: :feature do
 
       expect(Campaign.count).to eq(1)
     end
+
+    it "adds the cycle scenarios to the campaign" do
+      cycle = Campaign::CYCLES.values.first
+      visit root_path
+      click_link "Add new campaign"
+
+      within("form") do
+        select cycle, from: "Cycle"
+        fill_in "Name", :with => "Night of the Zealot"
+        click_button "Save"
+      end
+      cycle_scenarios = Scenario::CYCLE_SCENARIOS_MAPPING[cycle]
+
+      same_number = (Campaign.last.scenarios.size == cycle_scenarios.size)
+      expect(same_number).to eq(true)
+    end
   end
 
   describe "View a campaign" do
