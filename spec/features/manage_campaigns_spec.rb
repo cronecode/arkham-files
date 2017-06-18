@@ -2,21 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Campaign Management", type: :feature do
   describe "Add a new campaign" do
-    it "Creates a new campaign" do
-      cycle = Campaign::CYCLES.values.first
-      visit root_path
-      click_link "Add new campaign"
-
-      within("form") do
-        select cycle, from: "Cycle"
-        fill_in "Name", :with => "Night of the Zealot"
-        click_button "Save"
-      end
-
-      expect(Campaign.count).to eq(1)
-    end
-
-    it "adds the cycle scenarios to the campaign" do
+    it "adds the cycle scenarios to the created campaign" do
       cycle = Campaign::CYCLES.values.first
       visit root_path
       click_link "Add new campaign"
