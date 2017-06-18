@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Campaign Management", type: :feature do
   describe "Add a new campaign" do
-    it "Creates a new campaign" do
+    it "adds the cycle scenarios to the created campaign" do
       cycle = Campaign::CYCLES.values.first
       visit root_path
       click_link "Add new campaign"
@@ -12,8 +12,10 @@ RSpec.describe "Campaign Management", type: :feature do
         fill_in "Name", :with => "Night of the Zealot"
         click_button "Save"
       end
+      cycle_scenarios = Scenario::CYCLE_SCENARIOS_MAPPING[cycle]
 
-      expect(Campaign.count).to eq(1)
+      same_number = (Campaign.last.scenarios.size == cycle_scenarios.size)
+      expect(same_number).to eq(true)
     end
   end
 
