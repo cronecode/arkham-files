@@ -21,7 +21,7 @@ RSpec.describe "Investigator Management", type: :feature do
     it "displays an investigator's information" do
       campaign = FactoryGirl.create(:campaign)
       FactoryGirl.create(:investigator,
-                         name:               "Skids",
+                         name:               "Skids O'Toole",
                          campaign_id:        campaign.id,
                          status:             Investigator::INSANE,
                          physical_trauma:    2,
@@ -30,13 +30,12 @@ RSpec.describe "Investigator Management", type: :feature do
                          unspent_experience: 5)
 
       visit campaign_path(campaign)
-      click_link "Skids"
 
       expect(page).to have_text("Status: INSANE")
       expect(page).to have_text("Physical Trauma: 2")
       expect(page).to have_text("Mental Trauma: 6")
       expect(page).to have_text("Experience Earned: 10")
-      expect(page).to have_text("Unspent Experience: 5")
+      expect(page).to have_text("Unspent XP: 5")
     end
   end
 
@@ -71,10 +70,9 @@ RSpec.describe "Investigator Management", type: :feature do
       investigator = FactoryGirl.create(:investigator, name: "Daisy Walker", campaign: campaign)
 
       visit campaign_path(campaign)
-      click_link "Daisy Walker"
       click_link "Delete"
 
-      expect(page).to_not have_link("Daisy Walker")
+      expect(page).to_not have_content("Daisy Walker.png")
     end
   end
 end
