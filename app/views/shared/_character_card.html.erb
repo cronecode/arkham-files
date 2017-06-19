@@ -1,0 +1,51 @@
+<div class="thumbnail">
+  <div class="row">
+    <div class="col-xs-5">
+      <%= image_tag("#{target.name}.png", alt: "#{target.name}") %>
+    </div>
+    <div class="col-xs-7">
+      <div class="row">
+        <div class="span">
+          <div class="col-xs-8 text-left">
+            Status:
+          </div>
+          <div class="col-xs-4">
+            <%= target.status %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          Physical Trauma:
+        </div>
+        <div class="col-xs-4">
+          <%= target.physical_trauma %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          Mental Trauma:
+        </div>
+        <div class="col-xs-4">
+          <%= target.mental_trauma %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          Experience Earned:
+        </div>
+        <div class="col-xs-4">
+          <%= target.experience_earned %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          Unspent XP:
+        </div>
+        <div class="col-xs-4">
+          <%= target.unspent_experience %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
