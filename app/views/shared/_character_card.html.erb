@@ -46,6 +46,13 @@
           <%= target.unspent_experience %>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-6 text-center">
+          <a href="<%= campaign_investigator_path(target.campaign_id, target.id)%>" data-method="delete" class="btn btn-danger btn-lg">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
