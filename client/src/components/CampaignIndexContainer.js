@@ -14,7 +14,6 @@ class CampaignIndexContainer extends Component {
         return response.json() })
       .then((campaigns) => {
         this.setState({ campaigns })
-        console.log(this.state)
       })
   }
 
