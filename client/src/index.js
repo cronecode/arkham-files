@@ -5,6 +5,7 @@ import CampaignIndexContainer from './components/CampaignIndexContainer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import './styles/index.css'
+import 'font-awesome/css/font-awesome.css'
 
 var history = createBrowserHistory()
 
