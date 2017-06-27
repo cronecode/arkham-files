@@ -25,13 +25,4 @@ class CampaignIndexContainer extends Component {
   }
 }
 
-const fetchCampaigns = () => {
-  var campaigns = [
-    {name: 'Foo'},
-    {name: 'Bar'}
-  ]
-
-  return campaigns
-}
-
 export default CampaignIndexContainer
