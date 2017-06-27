@@ -10,7 +10,7 @@ RSpec.describe '/api/campaigns', type: :request do
 
       expect(response).to have_http_status(200)
       expect(response.body).to include_json(
-        data: [
+        [
           { name: 'Solo Campaign' }
         ]
       )
