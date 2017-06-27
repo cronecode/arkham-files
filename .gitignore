@@ -26,4 +26,6 @@ client/node_modules
 spec/examples.txt
 
 .idea/
+.sass-cache/
 npm-debug.log
+src/styles/*.css
