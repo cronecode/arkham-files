@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import CampaignIndexContainer from './components/CampaignIndexContainer'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { createBrowserHistory } from 'history'
+import HomePage from './components/HomePage'
+import './styles/index.css'
+import 'font-awesome/css/font-awesome.css'
 
-ReactDOM.render(<App />, document.getElementById('root'));
-//registerServiceWorker();
+var history = createBrowserHistory()
+
+ReactDOM.render(
+  <Router history={history}>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/api/campaigns" component={CampaignIndexContainer} />
+    </Switch>
+  </Router>
+  , document.getElementById('root'))
